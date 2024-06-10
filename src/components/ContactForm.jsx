@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 
 const ContactForm = () => {
+
+  const handleBoxClick = () => {
+    setFormData({ queryType: 'support' });
+  };
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -117,30 +121,49 @@ const ContactForm = () => {
         <div className="mb-4">
           <label className="block text-gray-700">Query Type</label>
           
-            <div class="grid grid-cols-2 gap-4">
-                <div>
-            <input
-              type="radio"
-              name="queryType"
-              value="general"
-              checked={formData.queryType === 'general'}
-              onChange={handleChange}
-              className="mr-2"
-            />
-            <label className="mr-4">General</label>
-            </div>
-            <div>
+            <div className="grid grid-cols-2 gap-4">
+            <div
+        onClick={() => handleBoxClick('support')}
+        style={{
+          border: '2px solid #000',
+          padding: '10px',
+          display: 'inline-block',
+          cursor: 'pointer',
+          backgroundColor: formData.queryType === 'support' ? '#f0f0f0' : '#fff',
+          marginRight: '10px' // Added margin for spacing between boxes
+        }}
+      >
+        <input
+          type="radio"
+          name="queryType"
+          value="support"
+          checked={formData.queryType === 'support'}
+          onChange={handleChange}
+        //   style={{ display: 'none' }}
+        />
+        <label>Support Request</label>
+      </div>
 
-            <input
-              type="radio"
-              name="queryType"
-              value="support"
-              checked={formData.queryType === 'support'}
-              onChange={handleChange}
-              className="mr-2"
-            />
-            <label>Support</label>
-            </div>
+      <div
+        onClick={() => handleBoxClick('general')}
+        style={{
+          border: '2px solid #000',
+          padding: '10px',
+          display: 'inline-block',
+          cursor: 'pointer',
+          backgroundColor: formData.queryType === 'general' ? '#f0f0f0' : '#fff'
+        }}
+      >
+        <input
+          type="radio"
+          name="queryType"
+          value="general"
+          checked={formData.queryType === 'general'}
+          onChange={handleChange}
+        //   style={{ display: 'none' }}
+        />
+        <label>General Support</label>
+      </div>
           </div>
         </div>
 
@@ -163,7 +186,7 @@ const ContactForm = () => {
               name="consent"
               checked={formData.consent}
               onChange={handleChange}
-              className={`mr-2 ${errors.consent ? 'border-red-500' : ''}`}
+              className={`mr-2 bg-[hsl(169,82%,27%)] ${errors.consent ? 'border-red-500' : ''}`}
             />
             <span className="text-gray-700">I agree to the terms and conditions</span>
           </label>
