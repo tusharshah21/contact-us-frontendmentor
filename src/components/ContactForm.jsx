@@ -80,7 +80,7 @@ const ContactForm = () => {
       <h2 className="text-2xl font-bold mb-4 text-[hsl(187,24%,22%)]">Contact Us</h2>
       
       <form onSubmit={handleSubmit} noValidate>
-      <div class="grid lg:rid-cols-2 gap-4">
+      <div class="grid lg:grid-cols-2 gap-4">
       <div className="mb-4">
           <label className="block text-gray-700 mb-2">First Name *</label>
           <input
