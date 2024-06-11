@@ -74,32 +74,33 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="bg-[hsl(148,38%,91%)] min-h-screen pt-8">
-    <div className="karla-regular max-w-lg mx-auto p-6 bg-white rounded-2xl shadow-md">
-      <h2 className="text-2xl font-bold mb-4">Contact Us</h2>
+    <div className="bg-[hsl(148,38%,91%)]">
+    <div className="flex flex-col items-center justify-center min-h-screen p-4">
+    <div className="karla-regular max-w-lg mx-auto p-6 bg-white rounded-2xl shadow-md w-full">
+      <h2 className="text-2xl font-bold mb-4 text-[hsl(187,24%,22%)]">Contact Us</h2>
       
       <form onSubmit={handleSubmit} noValidate>
-      <div class="grid grid-cols-2 gap-4">
+      <div class="grid lg:rid-cols-2 gap-4">
       <div className="mb-4">
-          <label className="block text-gray-700">First Name</label>
+          <label className="block text-gray-700 mb-2">First Name *</label>
           <input
             type="text"
             name="firstName"
             value={formData.firstName}
             onChange={handleChange}
-            className={`w-full px-3 py-2 border rounded-lg ${errors.firstName ? 'border-red-500' : ''}`}
+            className={`w-full px-3 py-2 border border-[hsl(186,15%,59%)] rounded-lg ${errors.firstName ? 'border-red-500' : ''}`}
           />
           {errors.firstName && <p className="text-red-500 text-sm text-left">{errors.firstName}</p>}
         </div>
 
         <div className="mb-4">
-          <label className="block text-gray-700">Last Name</label>
+          <label className="block text-gray-700 mb-2">Last Name *</label>
           <input
             type="text"
             name="lastName"
             value={formData.lastName}
             onChange={handleChange}
-            className={`w-full px-3 py-2 border rounded-lg ${errors.lastName ? 'border-red-500' : ''}`}
+            className={`w-full px-3 py-2 border border-[hsl(186,15%,59%)] rounded-lg ${errors.lastName ? 'border-red-500' : ''}`}
           />
           {errors.lastName && <p className="text-red-500 text-sm text-left">{errors.lastName}</p>}
         </div>
@@ -107,25 +108,25 @@ const ContactForm = () => {
         
 
         <div className="mb-4">
-          <label className="block text-gray-700">Email Address</label>
+          <label className="block text-gray-700 mb-2">Email Address *</label>
           <input
             type="email"
             name="email"
             value={formData.email}
             onChange={handleChange}
-            className={`w-full px-3 py-2 border rounded-lg ${errors.email ? 'border-red-500' : ''}`}
+            className={`w-full px-3 py-2 border active:border-[hsl(169,82%,27%)] border-[hsl(186,15%,59%)] rounded-lg ${errors.email ? 'border-red-500' : ''}`}
           />
           {errors.email && <p className="text-red-500 text-sm text-left">{errors.email}</p>}
         </div>
 
         <div className="mb-4">
-          <label className="block text-gray-700">Query Type</label>
+          <label className="block text-gray-700 mb-2">Query Type *</label>
           
-            <div className="grid grid-cols-2 gap-4">
-            <div
+            <div className="grid lg:grid-cols-2 gap-4">
+            <div className='rounded-lg'
         onClick={() => handleBoxClick('support')}
         style={{
-          border: '2px solid #000',
+          border: '1px solid hsl(186,15%,59%)',
           padding: '10px',
           display: 'inline-block',
           cursor: 'pointer',
@@ -141,13 +142,13 @@ const ContactForm = () => {
           onChange={handleChange}
         //   style={{ display: 'none' }}
         />
-        <label>Support Request</label>
+        <label className='pl-4'>Support Request</label>
       </div>
 
-      <div
+      <div className='rounded-lg '
         onClick={() => handleBoxClick('general')}
         style={{
-          border: '2px solid #000',
+          border: '1px solid hsl(186,15%,59%)',
           padding: '10px',
           display: 'inline-block',
           cursor: 'pointer',
@@ -162,18 +163,18 @@ const ContactForm = () => {
           onChange={handleChange}
         //   style={{ display: 'none' }}
         />
-        <label>General Support</label>
+        <label className="pl-4">General Support</label>
       </div>
           </div>
         </div>
 
         <div className="mb-4">
-          <label className="block text-gray-700">Message</label>
+          <label className="block text-gray-700 mb-2">Message *</label>
           <textarea
             name="message"
             value={formData.message}
             onChange={handleChange}
-            className={`w-full px-3 py-2 border rounded-lg ${errors.message ? 'border-red-500' : ''}`}
+            className={`w-full px-3 py-2 border active:border-[hsl(169,82%,27%)] border-[hsl(186,15%,59%)] rounded-lg ${errors.message ? 'border-red-500' : ''}`}
             rows="4"
           ></textarea>
           {errors.message && <p className="text-red-500 text-sm text-left">{errors.message}</p>}
@@ -188,7 +189,7 @@ const ContactForm = () => {
               onChange={handleChange}
               className={`mr-2 bg-[hsl(169,82%,27%)] ${errors.consent ? 'border-red-500' : ''}`}
             />
-            <span className="text-gray-700">I agree to the terms and conditions</span>
+            <span className="text-gray-700">I agree to the terms and conditions *</span>
           </label>
           {errors.consent && <p className="text-red-500 text-sm text-left">{errors.consent}</p>}
         </div>
@@ -203,6 +204,7 @@ const ContactForm = () => {
           {notification.message}
         </div>
       )}
+    </div>
     </div>
     </div>
   );
